@@ -1,3 +1,11 @@
+# DRAFT
+
+Public draft instance for a test Raspberry Pi. Not a release. Do not install it on a station that is already recording.
+
+Bird identification stays the official BirdNET models from the birdnet-team (Cornell Lab of Ornithology and Chemnitz University of Technology): https://birdnet.cornell.edu/ and https://github.com/birdnet-team
+
+This draft does not change the recognition engine.
+
 # 0.13
 - Removed secondary and tertiary custom URLs
 - Added new custom-compiled GoTTY binary
