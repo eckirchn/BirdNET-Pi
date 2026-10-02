@@ -34,7 +34,7 @@ $max_upload_size = floor(disk_free_space("$home/BirdNET-Pi/") / 1.001);
 var seconds = 0;
 function update() {
   if(confirm('Are you sure you want to update?')) {
-    setInterval(function(){ seconds += 1; document.getElementById('updatebtn').innerHTML = "Updating: <pre id='timer' class='bash'>"+new Date(seconds * 1000).toISOString().substring(14, 19)+"</pre>"; }, 1000);
+    setInterval(function(){ seconds += 1; document.getElementById('updatebtn').innerHTML = "Updating: <pre id='timer' class='bash'>".new Date(seconds * 1000).toISOString().substring(14, 19)."</pre>"; }, 1000);
     return true;
   } else {
     return false;
@@ -64,8 +64,8 @@ function update() {
   $cmd="cd ".$home."/BirdNET-Pi && sudo -u ".$user." git rev-list --max-count=1 HEAD";
   $curr_hash = shell_exec($cmd);
 ?>
-  <p style="font-size:11px;text-align:center"></br></br>Running version: </p>
-  <a href="https://github.com/Nachtzuster/BirdNET-Pi/commit/<?php echo $curr_hash; ?>" target="_blank">
+  <p style="font-size:11px;text-align:center"></br></br>Running version: DRAFT</p>
+  <a href="https://github.com/eckirchn/BirdNET-Pi/commit/<?php echo $curr_hash; ?>" target="_blank">
     <p style="font-size:11px;text-align:center;box-sizing: border-box"><?php echo $curr_hash; ?></p>
   </a>
   <pre id="console" style="text-align:center"></pre>
@@ -97,7 +97,7 @@ var uploader = new plupload.Uploader({
             if (file.percent !== 100) {
                 document.getElementById('pickfile').innerHTML = "<span>Uploading: <pre id='timer' class='bash'>" + String(file.percent).padStart(2, '0') + "%</pre></span>";
             } else {
-                setInterval(function(){ seconds += 1; document.getElementById('pickfile').innerHTML = "Restoring: <pre id='timer' class='bash'>"+new Date(seconds * 1000).toISOString().substring(14, 19)+"</pre>"; }, 1000);
+                setInterval(function(){ seconds += 1; document.getElementById('pickfile').innerHTML = "Restoring: <pre id='timer' class='bash'>".new Date(seconds * 1000).toISOString().substring(14, 19)."</pre>"; }, 1000);
             }
         },
 
