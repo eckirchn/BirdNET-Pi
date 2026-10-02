@@ -34,7 +34,7 @@ $max_upload_size = floor(disk_free_space("$home/BirdNET-Pi/") / 1.001);
 var seconds = 0;
 function update() {
   if(confirm('Are you sure you want to update?')) {
-    setInterval(function(){ seconds += 1; document.getElementById('updatebtn').innerHTML = "Updating: <pre id='timer' class='bash'>"."+new Date(seconds * 1000).toISOString().substring(14, 19)+"."</pre>"; }, 1000);
+    setInterval(function(){ seconds += 1; document.getElementById('updatebtn').innerHTML = "Updating: <pre id='timer' class='bash'>"+new Date(seconds * 1000).toISOString().substring(14, 19)+"</pre>"; }, 1000);
     return true;
   } else {
     return false;
@@ -75,8 +75,8 @@ function update() {
 
 var uploader = new plupload.Uploader({
     runtimes : 'html5',
-    browse_button : 'pickfile',
-    container: document.getElementById('container'),
+    browse_button : 'pickfile', // you can pass an id...
+    container: document.getElementById('container'), // ... or DOM Element itself
     url : 'scripts/restore.php',
     chunk_size: '2mb',
     multi_selection: false,
@@ -95,13 +95,14 @@ var uploader = new plupload.Uploader({
 
         UploadProgress: function(up, file) {
             if (file.percent !== 100) {
-                document.getElementById('pickfile').innerHTML = "<span>Uploading: <pre id='timer' class='bash'>"."+ String(file.percent).padStart(2, '0') +"."%</pre></span>";
+                document.getElementById('pickfile').innerHTML = "<span>Uploading: <pre id='timer' class='bash'>" + String(file.percent).padStart(2, '0') + "%</pre></span>";
             } else {
-                setInterval(function(){ seconds += 1; document.getElementById('pickfile').innerHTML = "Restoring: <pre id='timer' class='bash'>"."+new Date(seconds * 1000).toISOString().substring(14, 19)+"."</pre>"; }, 1000);
+                setInterval(function(){ seconds += 1; document.getElementById('pickfile').innerHTML = "Restoring: <pre id='timer' class='bash'>"+new Date(seconds * 1000).toISOString().substring(14, 19)+"</pre>"; }, 1000);
             }
         },
 
         FileUploaded: function(up, file, info) {
+            // Called when file has finished uploading
             console.log('[FileUploaded] File:', file, "Info:", info);
             const xhttp = new XMLHttpRequest();
             xhttp.onload = function() {
