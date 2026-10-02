@@ -1,3 +1,21 @@
+# DRAFT
+
+**This branch is a draft instance. Do not use it on a station you rely on.** It is public so a test Raspberry Pi can install it. It is not a release.
+
+- Install from [eckirchn/BirdNET-Pi](https://github.com/eckirchn/BirdNET-Pi) branch `draft`. This installer does not clone Nachtzuster.
+- Bird identification is official BirdNET from the [birdnet-team](https://github.com/birdnet-team) (Cornell Lab of Ornithology and Chemnitz University of Technology): [birdnet.cornell.edu](https://birdnet.cornell.edu/). The model files in `model/` are those models. This draft does not change the recognition engine.
+- The pages started as the BirdNET-Pi web interface. The GitHub network still roots at [birdnet-team/BirdNET-Lite](https://github.com/birdnet-team/BirdNET-Lite).
+
+On a fresh 64-bit Raspberry Pi OS:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/eckirchn/BirdNET-Pi/draft/newinstaller.sh | bash
+```
+
+The install still downloads a prebuilt `tflite_runtime` wheel from Nachtzuster's `v0.1` release. birdnet-team does not publish that wheel. The bird model itself is already in this repository.
+
+---
+
 <h1 align="center"><a href="https://github.com/mcguirepr89/BirdNET-Pi/blob/main/LICENSE">Review the license!!</a></h1>
 <h1 align="center">You may not use BirdNET-Pi to develop a commercial product!!!!</h1>
 <h1 align="center">
@@ -34,7 +52,7 @@ Changes include:
 !! note: see 'Migrating' on how to migrate from mcguirepr89
 
 ## Introduction
-BirdNET-Pi is built on the [BirdNET framework](https://github.com/kahst/BirdNET-Analyzer) by [**@kahst**](https://github.com/kahst) <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg"></a> using [pre-built TFLite binaries](https://github.com/PINTO0309/TensorflowLite-bin) by [**@PINTO0309**](https://github.com/PINTO0309) . It is able to recognize bird sounds from a USB microphone or sound card in realtime and share its data with the rest of the world.
+BirdNET-Pi is built on the [BirdNET framework](https://github.com/birdnet-team/BirdNET-Analyzer) by [**@kahst**](https://github.com/kahst) <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg"></a> using [pre-built TFLite binaries](https://github.com/PINTO0309/TensorflowLite-bin) by [**@PINTO0309**](https://github.com/PINTO0309) . It is able to recognize bird sounds from a USB microphone or sound card in realtime and share its data with the rest of the world.
 
 Check out birds from around the world
 - [BirdWeather](https://app.birdweather.com)<br>
@@ -62,7 +80,7 @@ Check out birds from around the world
 * A USB Microphone or Sound Card
 
 ## Installation
-[A comprehensive installation guide is available here](https://github.com/mcguirepr89/BirdNET-Pi/wiki/Installation-Guide). This guide is slightly out-dated: make sure to pick Bookworm, also the curl command is still pointing to mcguirepr89's repo.
+[A comprehensive installation guide is available here](https://github.com/mcguirepr89/BirdNET-Pi/wiki/Installation-Guide). This guide is slightly out-dated: use 64-bit Raspberry Pi OS (Trixie or Bookworm). The command below installs this draft.
 
 Please note that installing BirdNET-Pi on top of other servers is not supported. If this is something that you require, please open a discussion for your idea and inquire about how to contribute to development.
 
@@ -70,7 +88,7 @@ Please note that installing BirdNET-Pi on top of other servers is not supported.
 
 The system can be installed with:
 ```
-curl -s https://raw.githubusercontent.com/Nachtzuster/BirdNET-Pi/main/newinstaller.sh | bash
+curl -fsSL https://raw.githubusercontent.com/eckirchn/BirdNET-Pi/draft/newinstaller.sh | bash
 ```
 The installer takes care of any and all necessary updates, so you can run that as the very first command upon the first boot, if you'd like.
 
@@ -129,15 +147,9 @@ cpu-model: BirdNet
 /usr/local/bin/uninstall.sh && cd ~ && rm -drf BirdNET-Pi
 ```
 ## Migrating
-Before switching, make sure your installation is fully up-to-date. Also make sure to have a backup, that is also the only way to get back to the original BirdNET-Pi.
-Please note that upgrading your underlying OS to Bookworm is not going to work. Please stick to Bullseye. If you do want Bookworm, you need to start from a fresh install and copy back your data. (remember the backup!)
+Do not point this draft at Nachtzuster. This instance updates from `https://github.com/eckirchn/BirdNET-Pi.git` branch `draft`.
 
-Run these commands to migrate to this repo:
-```
-git remote remove origin
-git remote add origin https://github.com/Nachtzuster/BirdNET-Pi.git
-./scripts/update_birdnet.sh
-```
+To move detections onto a test Pi, back up the recording station and restore on this draft install. Do not restore onto the Pi that is still recording.
 ## Troubleshooting and Ideas
 *Hint: A lot of weird problems can be solved by simply restarting the core services. Do this from the web interface "Tools" > "Services" > "Restart Core Services"
 Having trouble or have an idea? *Submit an issue for trouble* and a *discussion for ideas*. Please do *not* submit an issue as a discussion -- the issue tracker solicits information that is needed for anyone to help -- discussions are *not for issues*.
