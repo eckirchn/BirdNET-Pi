@@ -28,9 +28,9 @@ set_timezone();
 <div class="banner">
   <div class="logo">
 <?php if(isset($_GET['logo'])) {
-echo "<a href=\"https://github.com/Nachtzuster/BirdNET-Pi.git\" target=\"_blank\"><img style=\"width:60;height:60;\" src=\"images/bird.png\"></a>";
+echo "<a href=\"https://birdnet.cornell.edu/\" target=\"_blank\"><img style=\"width:60;height:60;\" src=\"images/bird.png\"></a>";
 } else {
-echo "<a href=\"https://github.com/Nachtzuster/BirdNET-Pi.git\" target=\"_blank\"><img src=\"images/bird.png\"></a>";
+echo "<a href=\"https://birdnet.cornell.edu/\" target=\"_blank\"><img src=\"images/bird.png\"></a>";
 }?>
   </div>
 
@@ -43,7 +43,7 @@ if(isset($_GET['stream'])){
   <audio controls autoplay><source src=\"/stream\"></audio>
   </div>
   <h1><a href=\"/\"><img class=\"topimage\" src=\"images/bnp.png\"></a></h1>
-  </div><div class=\"centered\"><h3>$site_name</h3></div>";
+  </div><div class=\"centered\"><h3>$site_name</h3><p><strong>DRAFT</strong> — not a release. Identification: <a href=\"https://birdnet.cornell.edu/\" target=\"_blank\">BirdNET</a> (<a href=\"https://github.com/birdnet-team/BirdNET-Analyzer\" target=\"_blank\">birdnet-team</a>).</p></div>";
 } else {
     echo "
   <form action=\"index.php\" method=\"GET\">
@@ -51,7 +51,7 @@ if(isset($_GET['stream'])){
   </form>
   </div>
   <h1><a href=\"/\"><img class=\"topimage\" src=\"images/bnp.png\"></a></h1>
-</div><div class=\"centered\"><h3>$site_name</h3></div>";
+</div><div class=\"centered\"><h3>$site_name</h3><p><strong>DRAFT</strong> — not a release. Identification: <a href=\"https://birdnet.cornell.edu/\" target=\"_blank\">BirdNET</a> (<a href=\"https://github.com/birdnet-team/BirdNET-Analyzer\" target=\"_blank\">birdnet-team</a>).</p></div>";
 }
 if(isset($_GET['filename'])) {
   $filename = $_GET['filename'];
