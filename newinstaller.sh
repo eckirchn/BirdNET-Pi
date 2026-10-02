@@ -5,10 +5,14 @@ if [ "$EUID" == 0 ]
   exit
 fi
 
+echo "DRAFT — eckirchn/BirdNET-Pi. Not for a station you rely on."
+echo "Identification method: https://birdnet.cornell.edu/"
+echo "Engine source: https://github.com/birdnet-team"
+
 if [ "$(uname -m)" != "aarch64" ] && [ "$(uname -m)" != "x86_64" ];then
-  echo "BirdNET-Pi requires a 64-bit OS.
-It looks like your operating system is using $(uname -m),
-but would need to be aarch64."
+  echo "This draft needs 64-bit Raspberry Pi OS (uname -m must be aarch64)."
+  echo "This machine reports $(uname -m). 32-bit Pi OS cannot run the BirdNET TFLite model."
+  echo "On a Pi 3B, 3B+, 4, 400, 5, or Zero 2 W, reflash Raspberry Pi OS Lite (64-bit), then run this again."
   exit 1
 fi
 
@@ -44,7 +48,7 @@ if [[ ! -z $PACKAGES_MISSING ]] ; then
 fi
 
 branch=main
-git clone -b $branch --depth=1 https://github.com/Nachtzuster/BirdNET-Pi.git ${HOME}/BirdNET-Pi &&
+git clone -b $branch --depth=1 https://github.com/eckirchn/BirdNET-Pi.git ${HOME}/BirdNET-Pi &&
 
 $HOME/BirdNET-Pi/scripts/install_birdnet.sh
 if [ ${PIPESTATUS[0]} -eq 0 ];then
